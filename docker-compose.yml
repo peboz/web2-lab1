@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: web2
+      POSTGRES_PASSWORD: web2
+      POSTGRES_DB: web2_lab1
+    ports:
+      - "5433:5432"
+    volumes:
+      - web2_lab1_pg:/var/lib/postgresql/data
+
+volumes:
+  web2_lab1_pg:

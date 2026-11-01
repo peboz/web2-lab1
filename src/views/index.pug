@@ -1,0 +1,21 @@
+doctype html
+html(lang="hr")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+  body
+    h1= title
+    p Ukupno propusnica: #{total}
+    p Aktivnih propusnica: #{active}
+    if username
+      p Prijavljeni ste kao #{username}
+      p
+        a(href="/manage") Propusnice
+      form(method="post" action="/logout")
+        button(type="submit") Odjava
+    else if authConfigured
+      p
+        a(href="/login") Prijava
+    else
+      p Prijava čeka podatke za Auth0 u datoteci .env.

@@ -1,0 +1,35 @@
+doctype html
+html(lang="hr")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+  body
+    h1= title
+    if passes.length === 0
+      p Nema propusnica.
+    else
+      table
+        thead
+          tr
+            th Ime
+            th Dokument
+            th Status
+            th Izdana
+            th
+        tbody
+          each pass in passes
+            tr
+              td= pass.name
+              td= pass.document
+              td= pass.status
+              td= pass.issuedAt
+              td
+                a(href="/info/" + pass.id) Javna stranica
+                if pass.status === "ACTIVE"
+                  form(method="post" action="/manage/" + pass.id + "/cancel")
+                    button(type="submit") Poništi
+                form(method="post" action="/manage/" + pass.id + "/delete")
+                  button(type="submit") Obriši
+    p
+      a(href="/") Natrag
